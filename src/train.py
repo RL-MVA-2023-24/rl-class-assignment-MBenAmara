@@ -21,7 +21,7 @@ from torch.distributions.categorical import Categorical
 
 class ActorNetwork(nn.Module):
     def __init__(self, n_actions, input_dims, alpha,
-            fc1_dims=8, fc2_dims=4, chkpt_dir='tmp/ppo'):
+            fc1_dims=8, fc2_dims=4, chkpt_dir=''):
         super(ActorNetwork, self).__init__()
 
         self.checkpoint_file = os.path.join(chkpt_dir, 'actor_torch_ppo')
@@ -53,7 +53,7 @@ class ActorNetwork(nn.Module):
         self.load_state_dict(T.load(self.checkpoint_file,map_location=T.device('cpu')))
 class CriticNetwork(nn.Module):
     def __init__(self, input_dims, alpha, fc1_dims=8, fc2_dims=4,
-            chkpt_dir='tmp/ppo'):
+            chkpt_dir=''):
         super(CriticNetwork, self).__init__()
 
         self.checkpoint_file = os.path.join(chkpt_dir, 'critic_torch_ppo')
