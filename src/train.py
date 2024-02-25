@@ -1,3 +1,4 @@
+# %%writefile train.py
 # DQN config
 config = {'nb_actions': 4,
           'learning_rate': 0.00003,
@@ -126,8 +127,10 @@ class ProjectAgent:
   def load(self) : 
     try :
         self.model.load_state_dict(torch.load("modelBest"))
+        print("Loaded")
     except :
-        self.model.load_state_dict(torch.load("modelBest",map_location=T.device('cpu')))
+        self.model.load_state_dict(torch.load("modelBest",map_location=torch.device('cpu')))
+        print("Loaded")
 
   def train(self, env):
         max_episode = self.episodes
@@ -204,5 +207,5 @@ class ProjectAgent:
 
 
 
-# agent = ProjectAgent()
-# agent.train(env)
+#agent = ProjectAgent()
+#agent.train(env)
