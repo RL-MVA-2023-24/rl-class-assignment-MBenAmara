@@ -125,9 +125,9 @@ class ProjectAgent:
 
   def load(self) : 
     try :
-        self.model.load_state_dict(torch.load(self.checkpoint_file))
+        self.model.load_state_dict(torch.load("modelBest"))
     except :
-        self.model.load_state_dict(torch.load(self.checkpoint_file,map_location=T.device('cpu')))
+        self.model.load_state_dict(torch.load("modelBest",map_location=T.device('cpu')))
 
   def train(self, env):
         max_episode = self.episodes
