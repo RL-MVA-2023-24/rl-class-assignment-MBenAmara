@@ -126,10 +126,10 @@ class ProjectAgent:
 
   def load(self) : 
     try :
-        self.model.load_state_dict(torch.load("modelBest"))
+        self.model.load_state_dict(torch.load("model"))
         print("Loaded")
     except :
-        self.model.load_state_dict(torch.load("modelBest",map_location=torch.device('cpu')))
+        self.model.load_state_dict(torch.load("model",map_location=torch.device('cpu')))
         print("Loaded")
 
   def train(self, env):
